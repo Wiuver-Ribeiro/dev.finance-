@@ -18,7 +18,7 @@
     <img src="./assets/logo.svg" title="Dev finance" alt="dev.finance$">
     <div class="toogle-button">
       <label class="switch">
-        <input type="checkbox">
+        <input id="switch" type="checkbox" onclick="Mode.toggleMode()">
         <span class="slider round"></span>
       </label>
     </div>
@@ -31,7 +31,7 @@
       <div class="card">
         <h3>
           <span>Entradas</span>
-          <img src="./assets/income.svg" title="entradas" alt="Imagem de entradas">
+          <img src="./assets/income.svg" id="incomes_img" title="entradas" alt="Imagem de entradas" onclick="Hide.showDetails('incomes_img', 'incomeDisplay', 'income.svg', 'down-arrow.svg')" width="30px">
         </h3>
         <p id="incomeDisplay">R$ 0.000,00</p>
       </div>
@@ -39,7 +39,7 @@
       <div class="card">
         <h3>
           <span>Saídas</span>
-          <img src="./assets/expense.svg" title="saídas" alt="Imagem de saídas">
+          <img src="./assets/expense.svg" id="expenses_img" title="saídas" alt="Imagem de saídas">
         </h3>
         <p id="expenseDisplay">R$ 0.000,00</p>
       </div>
@@ -47,7 +47,7 @@
       <div class="card total">
         <h3>
           <span>Total</span>
-          <img src="./assets/total.svg" title="total" alt="Imagem de Total">
+          <img src="./assets/total.svg" id="total_img" title="total" alt="Imagem de Total" onclick="Hide.showDetails('total_img', 'totalDisplay', 'expense.svg', 'eye.svg')" width="30px">
         </h3>
         <p id="totalDisplay">R$ 0.000,00</p>
       </div>

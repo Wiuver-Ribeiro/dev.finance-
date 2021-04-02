@@ -74,8 +74,10 @@ const Transaction = {
 };
 
 const DOM = {
+
   transactionsContainer: document.querySelector('#data-table tbody'),
   addTransaction(transaction, index) {
+
     const tr = document.createElement('tr');
     tr.innerHTML = DOM.innerHTMLTransaction(transaction, index);
     tr.dataset.index = index;
@@ -194,7 +196,6 @@ const Form = {
 }
 
 
-
 const App = {
   init() {
     //Chamando a função de mostrar as transactions
@@ -207,13 +208,66 @@ const App = {
 
     //Salvar as transaction no localStorage
     Storage.set(Transaction.all);
-
+    //Reload no Tema
+    reloadDarkTheme();
   },
   reload() {
     DOM.clearTransaction();
-    App.init()
+
+    //Reload no tema da aplicação
+    reloadDarkTheme();
+    App.init();
   }
 };
 
-App.init();
+//DARK and LIGHT MODE
+const Mode = {
+  toggleMode() {
+    document.querySelector("body").classList.toggle('dark-mode-body');
+    document.querySelector("header").classList.toggle('dark-mode-header');
+    Mode.modeCard();
+    Mode.modeTable();
+    document.querySelector("footer").classList.toggle('dark-mode-footer');
+  },
+  modeCard() {
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+      card.classList.toggle('dark-mode-card')
+    })
+  },
+  modeTable() {
+    const tableTd = document.querySelectorAll("table td")
+    tableTd.forEach((td) => {
+      td.classList.toggle('dark-mode-table');
+    })
+  },
+}
 
+
+//Função acionado toda vez que carregar;
+function reloadDarkTheme() {
+
+  if(localStorage.darkMode=="true") {
+    Mode.toggleMode();
+    document.getElementById("switch").checked=true;
+  }
+};
+document.getElementById("switch").addEventListener('change', () => {
+  localStorage.darkMode=(localStorage.darkMode=="true")?"false":"true";
+});
+
+
+const Hide = {
+  showDetails(id_image, id_element, src, icon_1,icon_2) {
+    const newImg = document.getElementById(`${id_image}`);
+    const newTextDisplay = document.querySelector(`#${id_element}`);
+    newTextDisplay.innerHTML = "---------";
+    newImg.src = src ? `./assets/${icon_1}` : Hide.showIcon().Icone ; 
+  },
+  showIcon() {
+    Icone: './assets/income.svg';
+    document.querySelector('#incomeDisplay').innerHTML = Transaction.incomes();
+  },
+}
+
+App.init();

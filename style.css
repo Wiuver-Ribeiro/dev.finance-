@@ -22,6 +22,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -215,6 +216,9 @@ input:checked + .slider:before {
   line-height: 3rem;
   margin-top: 1rem;
 }
+.card img {
+  cursor: pointer;
+}
 
 .card.total {
   background: var(--green);
@@ -371,4 +375,30 @@ footer {
   header .toogle-button {
     right: 10px;
   }
+}
+
+
+/* Modo Dark e Light ================*/
+.dark-mode-body {
+  background-color: rgb(32,32,36);
+}
+.dark-mode-header {
+  background: rgb(18,18,20);
+}
+.dark-mode-card {
+  background: rgb(41,41,46);
+  color: #fff;
+}
+.dark-mode-table,
+.dark-mode-table:first0child{ 
+  background: rgb(41,41,46);
+  color: #fff;
+}
+.dark-mode-footer {
+  color: #fff;
+}
+
+
+.oculto{
+  content: "------";
 }
